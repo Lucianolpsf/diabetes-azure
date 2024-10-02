@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Dados</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Enviar Dados</h1>
+        <form id="dataForm">
+            <label for="apikey">Chave da API:</label>
+            <input type="text" id="apikey" required><br>
+
+            <label for="endpoint">Endpoint:</label>
+            <input type="text" id="endpoint" required><br>
+
+            <label for="pregnancies">Número de Gravidez:</label>
+            <input type="number" id="pregnancies" required><br>
+
+            <label for="glucose">Concentração de Glicose:</label>
+            <input type="number" id="glucose" required><br>
+
+            <label for="bloodPressure">Pressão Arterial:</label>
+            <input type="number" id="bloodPressure" required><br>
+            
+            <label for="skinThickness">Espessura da Pele:</label>
+            <input type="number" id="skinThickness" required><br>
+
+            <label for="insulin">Insulina:</label>
+            <input type="number" id="insulin" required><br>
+            
+            <label for="bmi">IMC:</label>
+            <input type="number" step="0.01" id="bmi" required><br>
+
+            <label for="diabetesPedigree">Diabetes Pedigree Function:</label>
+            <input type="number" step="0.01" id="diabetesPedigree" required><br>
+
+            <label for="age">Idade:</label>
+            <input type="number" id="age" required><br>
+
+            <button type="submit">Enviar</button>
+        </form>
+
+        <div class="response" id="response"></div>
+    </div>
+
+    <!-- <script src="./script.js"></script> -->
+    <script src="./diabetes.js"></script>
+    <!-- <script>
+        document.getElementById('dataForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const apiKey = document.getElementById('apikey').value;
+            const url = document.getElementById('endpoint').value;
+
+            const pregnancies = document.getElementById('pregnancies').value;
+            const glucose = document.getElementById('glucose').value;
+            const bloodPressure = document.getElementById('bloodPressure').value;
+            const insulin = document.getElementById('insulin').value;
+            const bmi = document.getElementById('bmi').value;
+            const diabetesPedigree = document.getElementById('diabetesPedigree').value;
+            const skinThickness = document.getElementById('skinThickness').value;
+            const age = document.getElementById('age').value;
+
+            const requestBody = JSON.stringify({
+                input_data: {
+                    columns: [
+                        "Pregnancies",
+                        "Glucose",
+                        "BloodPressure",
+                        "SkinThickness",
+                        "Insulin",
+                        "BMI",
+                        "DiabetesPedigreeFunction",
+                        "Age"
+                    ],
+                    index: [0],
+                    data: [[
+                        pregnancies,
+                        glucose,
+                        bloodPressure,
+                        skinThickness,
+                        insulin,
+                        bmi,
+                        diabetesPedigree,
+                        age
+                    ]]
+                }
+            });
+
+            const requestHeaders = new Headers({"Content-Type": "application/json"});
+            requestHeaders.append("Authorization", "Bearer " + apiKey);
+
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    body: requestBody,
+                    headers: requestHeaders
+                });
+
+                if (response.ok) {
+                    const json = await response.json();
+                    document.getElementById('response').innerText = JSON.stringify(json, null, 2);
+                } else {
+                    throw new Error("Request failed with status code " + response.status);
+                }
+            } catch (error) {
+                document.getElementById('response').innerText = 'Erro ao enviar dados: ' + error.message;
+            }
+        });
+    </script> -->
+</body>
+</html>
